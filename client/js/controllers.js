@@ -5,22 +5,15 @@ var ws="http://ws.gosanluis.com/tasks"
 clientControllers.controller("TaskListCtrl", ['$scope', '$http', function ($scope, $http) {
     $http.get(ws).success(function (data) {
         $scope.tasks = data;
+        //$scope.msg = "Ehlo"
+
+        function done(task, taskState){
+            task.done = taskState;
+            $scope.msg = 'clicked ' + task.title;
+        };
+
+        $scope.done = done;
+
     });
 }]);
-
-//var artistControllers = angular.module('artistControllers', []);
-//
-//artistControllers.controller('ListController', ['$scope', '$http', function ($scope, $http) {
-//    $http.get('js/data.json').success(function (data) {
-//        $scope.artists = data;
-//        $scope.artistOrder = 'name';
-//    });
-//}]);
-//
-//artistControllers.controller('DetailsController', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
-//    $http.get('js/data.json').success(function (data) {
-//        $scope.artists = data;
-//        $scope.whichItem = $routeParams.itemId;
-//    });
-//}]);
 
