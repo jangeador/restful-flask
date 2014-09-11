@@ -1,5 +1,5 @@
 #!flask/bin/python
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect, url_for
 
 app = Flask(__name__)
 
@@ -17,6 +17,12 @@ tasks = [
         'done': False
     }
 ]
+
+
+@app.route('/')
+def index():
+    return redirect(url_for('get_tasks'))
+
 
 # @app.route('/todo/api/v1.0/tasks', methods = ['GET'])
 @app.route('/tasks', methods=['GET'])
