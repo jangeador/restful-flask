@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app>
+	<head>
+		<title>Hello AngularJS</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular-resource.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular-route.min.js"></script>
+    	<script src="js/app.js"></script>
+    	<script src="js/controllers.js"></script>
+    	<script src="js/services.js"></script>
+	</head>
+	<body>
+	<div ng-controller="TaskListCtrl">
+		<div ng-repeat="task in tasks">
+			<p>The ID is {{task.id}}</p>
+			<p>The content is {{task.description}}</p>
+		</div>
+		</div>
+
+
+
+	</body>
+</html>
