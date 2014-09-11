@@ -1,5 +1,6 @@
 #!flask/bin/python
 from flask import Flask, jsonify, redirect, url_for
+from werkzeug.contrib.fixers import ProxyFix
 
 app = Flask(__name__)
 
@@ -30,5 +31,6 @@ def get_tasks():
     return jsonify({'tasks': tasks})
 
 
+app.wsgi_app = ProxyFix(app.wsgi_app)
 if __name__ == '__main__':
     app.run(debug=True)
