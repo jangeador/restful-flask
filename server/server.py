@@ -1,6 +1,7 @@
 #!flask/bin/python
 from flask import Flask, jsonify, redirect, url_for
 from werkzeug.contrib.fixers import ProxyFix
+from decorators import crossdomain
 
 app = Flask(__name__)
 
@@ -27,6 +28,7 @@ def index():
 
 # @app.route('/todo/api/v1.0/tasks', methods = ['GET'])
 @app.route('/tasks', methods=['GET'])
+@crossdomain(origin='*')
 def get_tasks():
     return jsonify({'tasks': tasks})
 
