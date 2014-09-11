@@ -6,7 +6,7 @@ VENVDIR=/home/jangeador/.virtualenvs/restful-flask
 SOCKFILE=/home/jangeador/projects/restful-flask/server/sock
 USER=jangeador
 GROUP=jangeador
-NUM_WORKERS=4
+NUM_WORKERS=1
 # File name without the .py
 MODULE_NAME=server
 PORT=32003
