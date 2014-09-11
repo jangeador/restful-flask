@@ -1,7 +1,9 @@
 var clientControllers = angular.module('clientControllers', []);
 
+var ws="http://ws.gosanluis.com/tasks"
+
 clientControllers.controller("TaskListCtrl", ['$scope', '$http', function ($scope, $http) {
-    $http.get('http://127.0.0.1:5000').success(function (data) {
+    $http.get(ws).success(function (data) {
         $scope.tasks = data;
     });
 }]);
