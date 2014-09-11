@@ -1,0 +1,33 @@
+#!/bin/sh
+
+NAME="Flask_Server"
+FLASKDIR=/home/jangeador/projects/restful-flask/server
+VENVDIR=/home/jangeador/.virtualenvs/restful-flask
+SOCKFILE=/home/jangeador/projects/restful-flask/server/sock
+USER=jangeador
+GROUP=jangeador
+NUM_WORKERS=4
+# File name without the .py
+MODULE_NAME=server
+PORT=32003
+
+
+echo "Starting $NAME"
+
+# activate the virtualenv
+cd $VENVDIR
+source bin/activate
+
+export PYTHONPATH=$FLASKDIR:$PYTHONPATH
+
+# Create the run directory if it doesn't exist
+RUNDIR=$(dirname $SOCKFILE)
+test -d $RUNDIR || mkdir -p $RUNDIR
+
+# Start your unicorn
+exec gunicorn $MODULE_NAME:app -b 127.0.0.1:$PORT \
+  --name $NAME \
+  --workers $NUM_WORKERS \
+  --user=$USER --group=$GROUP \
+  --log-level=debug \
+  --bind=unix:$SOCKFILE
