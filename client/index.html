@@ -25,14 +25,10 @@
             <div class="container">
 
                 <span ng-if="task.done">
-                    <button type="button" ng-click='done(task, false);'>
-                        <i class="fa fa-check-square-o"></i>
-                    </button>
+                        <i class="fa fa-check-square-o" ng-click='done(task, false);'></i>
                 </span>
                 <span ng-if="!task.done">
-                    <button type="button" ng-click='done(task, true);'>
-                        <i class="fa fa-square-o"></i>
-                    </button>
+                        <i class="fa fa-square-o" ng-click='done(task, true);'></i>
                 </span>
 
                 <a href="#/details/{{task.id}}">{{task.title}}</a>
