@@ -21,16 +21,16 @@
 <body ng-controller="TaskListCtrl">
 <div>
     <ul>
-        <li ng-repeat="task in tasks.tasks" class="list-unstyled">
+        <li ng-repeat="task in tasks" class="list-unstyled">
             <div class="container">
 
-                <span data-ng-show="{{task.done}}">
+                <span ng-if="task.done">
                     <button type="button" ng-click='done(task, false);'>
                         <i class="fa fa-check-square-o"></i>
                     </button>
                 </span>
-                <span data-ng-hide="{{task.done}}">
-                    <button type="button" ng-click='done(task, false);'>
+                <span ng-if="!task.done">
+                    <button type="button" ng-click='done(task, true);'>
                         <i class="fa fa-square-o"></i>
                     </button>
                 </span>
@@ -43,7 +43,7 @@
         </li>
     </ul>
 
-    <p>Message is: {{msg}}</p>
+    <div>Message is: {{msg}}</div>
 </div>
 
 
